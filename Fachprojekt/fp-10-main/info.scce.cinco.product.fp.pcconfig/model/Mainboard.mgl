@@ -1,0 +1,76 @@
+import "platform:/resource/info.scce.cinco.fp.compdsl/model/generated/ComponentDsl.ecore" as comp
+
+id info.scce.cinco.product.fp.pcconfig.mb.mgl
+stylePath "model/Configurator.style"
+
+// TODO Define the Mainboard model
+
+@primeviewer
+@mcam("check")
+@mcam_checkmodule("info.scce.cinco.product.fp.pcconfig.mb.mgl.checks.SocketCheck")
+@mcam_checkmodule("info.scce.cinco.product.fp.pcconfig.mb.mgl.checks.RamTypeCheck")
+@generatable("info.scce.cinco.product.fp.pcconfig.mb.mgl.generator.MainboardHTML", "mhtml")
+graphModel Mainboard { 
+	diagramExtension "mb"
+	containableElements(MbContainer)	
+}
+
+@disable(resize)
+@postCreate("info.scce.cinco.product.fp.pcconfig.mb.mgl.hook.MbContainerPostCreate")
+container MbContainer{
+	style MBStyle("${referencedMainboard.name}")
+	containableElements(Cpuslot,Ramslot,GpuSlot)
+	
+	@pvLabel(name)
+	@pvFileExtension("comp")
+	prime comp.Mainboard as referencedMainboard
+}
+
+@disable(resize,create,move,select,delete)
+container Cpuslot{
+	style CpuSlot("${SocketType}")
+	containableElements(CpuNode)
+	@readOnly
+	attr EString as SocketType
+}
+
+@disable(resize,move)
+@postCreate("info.scce.cinco.product.fp.pcconfig.mb.mgl.hook.CpuNodePostCreate")
+node CpuNode{
+	style CpuNodeStyle("${referencedCpu.name}")
+	@pvLabel(name)
+	@pvFileExtension("comp")
+	prime comp.CPU as referencedCpu
+}
+
+@disable(resize,create,move,select,delete)
+container Ramslot{
+	style RamSlot("${RamType}")
+	containableElements(RamNode)
+	attr EString as RamType
+}
+
+@disable(resize,move)
+@postCreate("info.scce.cinco.product.fp.pcconfig.mb.mgl.hook.RamNodePostCreate")
+node RamNode{
+	style RamNodeStyle("${referencedRam.name}")
+	 @pvLabel(name)
+	 @pvFileExtension("comp")
+	 prime comp.RAM as referencedRam
+}
+
+@disable(resize,create,move,select,delete)
+container GpuSlot{
+	style GpuSlot("GPU Slot")
+	containableElements(GpuNode)
+}
+
+@disable(resize,move)
+@postCreate("info.scce.cinco.product.fp.pcconfig.mb.mgl.hook.GpuNodePostCreate")
+node GpuNode{
+	style GpuNodeStyle("${referencedGpu.name}")
+		@pvLabel(name)
+		@pvFileExtension("comp")
+		prime comp.GPU as referencedGpu
+	}
+	

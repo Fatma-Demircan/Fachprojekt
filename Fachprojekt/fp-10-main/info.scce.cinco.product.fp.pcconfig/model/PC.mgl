@@ -1,0 +1,80 @@
+import "platform:/resource/info.scce.cinco.fp.compdsl/model/generated/ComponentDsl.ecore" as comp
+import "model/Mainboard.mgl" as mainboard
+id info.scce.cinco.product.fp.pcconfig.pc.mgl
+stylePath "model/Configurator.style"
+
+// TODO Define the PC model
+@mcam("check")
+@mcam_checkmodule("info.scce.cinco.product.fp.pcconfig.pc.check.PowerConsumptionCheck")
+@mcam_checkmodule("info.scce.cinco.product.fp.pcconfig.pc.check.FormFactorCheck")
+@mcam_checkmodule("info.scce.cinco.product.fp.pcconfig.pc.check.DriveAmountCheck")
+@generatable("info.scce.cinco.product.fp.pcconfig.mb.mgl.generator.PCHTML", "pchtml")
+@primeviewer
+
+graphModel PC {
+	diagramExtension "pc"
+	containableElements(CaseContainer)
+}
+
+@postCreate("info.scce.cinco.product.fp.pcconfig.pc.hook.CaseContainerPostCreate")
+@disable(resize)
+container CaseContainer{
+	
+	style CaseContainerStyle("${referencedcase.name}")
+	@pvLabel(name)
+	@pvFileExtension("comp")
+	prime comp.Case as referencedcase
+	containableElements(DriveContainer,PowerSContainer,MBCONTAINER)
+}
+
+@disable(resize,create,move,select,delete)
+container DriveContainer{
+	
+	style DriveContainerStyle("drive slot")
+		containableElements(DriveNode)
+	
+}
+
+@postCreate("info.scce.cinco.product.fp.pcconfig.pc.hook.DriveNodePostCreate")
+@disable(resize,move)
+node DriveNode{
+	
+	style DriveNodeStyle("${referenceddrive.name}")
+	@pvLabel(name)
+	@pvFileExtension("comp")
+	prime comp.Drive as referenceddrive
+	
+}
+
+@disable(resize,create,move,select,delete)
+container PowerSContainer{
+	
+	style PowerSContainerStyle("PowerSupply slot ")
+	containableElements(PowerSNode)
+}
+
+@postCreate("info.scce.cinco.product.fp.pcconfig.pc.hook.PowerSNodePostCreate")
+@disable(resize,move)
+node PowerSNode{
+	style PowerSNodeStyle("${referencdpsu.name}")
+	@pvLabel(name)
+	@pvFileExtension("comp")
+	prime comp.PowerSupply as referencdpsu
+}
+
+@disable(resize,create,move,select,delete)
+container MBCONTAINER{
+	
+	style MBcontainerstyle("Mainboard slot")
+	containableElements(MBNode)
+}
+
+@postCreate("info.scce.cinco.product.fp.pcconfig.pc.hook.MBNodePostCreate")
+@disable(resize,move)
+node MBNode{
+	
+	style MBNodeStyle("Mainboard")
+	
+	prime mainboard::Mainboard as referencedMB
+	
+}

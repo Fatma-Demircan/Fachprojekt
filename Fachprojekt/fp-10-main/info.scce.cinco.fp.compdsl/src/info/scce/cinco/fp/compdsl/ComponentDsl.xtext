@@ -1,0 +1,112 @@
+grammar info.scce.cinco.fp.compdsl.ComponentDsl with org.eclipse.xtext.common.Terminals
+
+generate componentDsl "http://cinco.scce.info/fp/ComponentDsl"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+// TODO Define the Component DSL
+
+
+Model:
+ 
+	components += Component+
+;
+
+terminal FLOAT returns ecore::EFloat: (INT '.' ('0'..'9')('0'..'9')?);
+
+Component:
+	Mainboard |
+	CPU |
+	RAM |
+	Drive |
+	PowerSupply |
+	GPU |
+	Case 
+	;
+	
+Mainboard: 'MainboardDescriptor' '['
+    'name' '=' name = STRING
+    'chipset' '=' chipset = STRING
+    'numMemorySlots' '=' numMemorySlots = INT
+    'typeMemorySlots' '=' typeMemorySlots = RamType
+    'numPCIe16Slots' '=' numPCIe16Slots = INT
+    'numSataPorts' '=' numSataPorts = INT
+    'powerConsumption' '=' powerConsumption = INT
+    'socket' '=' socket = SocketType
+    'formFactor' '=' formFactor = FormFactor
+    'price' '=' price = FLOAT
+']';
+
+CPU: 'CPUDescriptor' '['
+	'name''='name = STRING
+	'type' '=' type = STRING
+	'powerConsumption''=' powerConsumption = INT
+	'socket' '=' socket = SocketType
+	'price' '=' price = FLOAT
+']';
+
+RAM: 'RAMDescriptor' '['
+    'name' '=' name = STRING
+    'type' '=' type = RamType
+    'capacity' '=' capacity = INT
+    'powerConsumption' '=' powerConsumption = INT
+    'price' '=' price = FLOAT
+']';
+
+Drive: 'DriveDescriptor' '['
+    'name' '=' name = STRING
+    'type' '=' type = DriveType
+    'description' '=' description = STRING
+    'powerConsumption' '=' powerConsumption = INT
+    'price' '=' price = FLOAT
+']';
+
+
+PowerSupply: 'PowerSupplyDescriptor' '['
+    'name' '=' name = STRING
+    'power' '=' power = INT
+    'price' '=' price = FLOAT
+']';
+
+
+GPU: 'GPUDescriptor' '['
+    'name' '=' name = STRING
+    'chip' '=' chip = STRING
+    'memory' '=' memory = INT
+    'powerConsumption' '=' powerConsumption = INT
+    'price' '=' price = FLOAT
+']';
+
+Case: 'CaseDescriptor' '['
+    'name' '=' name = STRING
+    'formFactor' '=' formFactor = FormFactor
+    'internalSlots' '=' internalSlots = INT
+    'externalSlots' '=' externalSlots = INT
+    'price' '=' price = FLOAT
+']';
+      
+enum SocketType : 
+    Socket1150  |
+    Socket1151  |
+    Socket1155  |
+    SocketAM1  |
+    SocketAM3  |
+    SocketFM2  ;
+    
+enum FormFactor : 
+    MicroATX |
+    MiniITX  |
+    ATX ;
+
+enum RamType : 
+    DDR2  |
+    DDR4  |
+    DDR3 ;
+
+enum DriveType : 
+    HardDrive  |
+    OpticalDrive ;
+    
+
+	
+

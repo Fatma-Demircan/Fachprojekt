@@ -1,0 +1,177 @@
+nodeStyle MBStyle(1) {
+	rectangle {
+		appearance {
+			background (192,192,192) // Grauer Hintergrund
+		}
+		size (350, 500) // Größe des Rechtecks (Breite x Höhe)
+		text {
+			position (LEFT,TOP) // Position des Textes im Rechteck
+			value "%s" //"%s" ist ein Platzhalter für einen String.
+		}
+	}
+}
+nodeStyle CpuSlot(1) {
+    rectangle {
+        appearance {
+            background (0,128,0) // Leicht Grün
+        }
+        size (200, 200) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der übergebene Parameter wird hier angezeigt
+        }
+    }
+}
+nodeStyle CpuNodeStyle(1) {
+    rectangle {
+        appearance {
+            background (0,128,0) //Leicht Grün
+        }                  
+        size (200,200) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+
+nodeStyle RamSlot(1) {
+    rectangle {
+        appearance {
+            background (0,128,192) //leicht blau
+        }                  
+        size (150,150) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+
+nodeStyle RamNodeStyle(1) {
+    rectangle {
+        appearance {
+            background (0,128,192) //leicht blau
+        }                  
+        size (150,150) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+
+nodeStyle GpuSlot(1) {
+    rectangle {
+        appearance {
+            background (255,128,64) //Orange
+        }                  
+        size (200,200) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+
+nodeStyle GpuNodeStyle(1) {
+    rectangle {
+        appearance {
+            background (255,128,64) //Orange
+        }                  
+        size (200,200) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+
+nodeStyle CaseContainerStyle(1) {
+	rectangle {
+		appearance {
+			background (192,192,192) // Grauer Hintergrund
+		}
+		size (350, 500) // Größe des Rechtecks (Breite x Höhe)
+		text {
+			position (LEFT,TOP) // Position des Textes im Rechteck
+			value "%s" //"%s" ist ein Platzhalter für einen String.
+		}
+	}
+}
+
+nodeStyle DriveContainerStyle(1) {
+    rectangle {
+        appearance {
+            background (0,128,192) //leicht blau
+        }                  
+        size (150,150) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+
+nodeStyle DriveNodeStyle(1) {
+    rectangle {
+        appearance {
+            background (0,128,192) //leicht blau
+        }                  
+        size (150,150) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+nodeStyle PowerSContainerStyle(1) {
+    rectangle {
+        appearance {
+            background (0,128,0) // Leicht Grün
+        }
+        size (200, 200) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der übergebene Parameter wird hier angezeigt
+        }
+    }
+}
+nodeStyle PowerSNodeStyle(1) {
+    rectangle {
+        appearance {
+            background (0,128,0) //Leicht Grün
+        }                  
+        size (200,200) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+nodeStyle MBcontainerstyle(1) {
+    rectangle {
+        appearance {
+            background (255,128,64) //Orange
+        }                  
+        size (200,200) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+nodeStyle MBNodeStyle(1) {
+    rectangle {
+        appearance {
+            background (255,128,64) //Orange
+        }                  
+        size (200,200) // Größe des Rechtecks
+        text {
+            position (CENTER, MIDDLE) // Text zentriert im Rechteck
+            value "%s" // Der Name der referenzierten CPU wird hier angezeigt
+        }
+    }
+}
+
+
